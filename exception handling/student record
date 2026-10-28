@@ -1,0 +1,45 @@
+try:
+    name = input("Enter student name: ")
+    roll_number = int(input("Enter roll number: "))
+
+    subjects = {}
+
+    n = int(input("Enter number of subjects: "))
+
+    for i in range(n):
+        subject = input(f"Enter subject {i + 1} name: ")
+
+        if subject in subjects:
+            raise ValueError("Subject already exists.")
+
+        marks = float(input(f"Enter marks for {subject}: "))
+
+        if marks < 0 or marks > 100:
+            raise ValueError("Marks must be between 0 and 100.")
+
+        subjects[subject] = marks
+
+    search_subject = input("\nEnter subject name to display marks: ")
+
+    if search_subject not in subjects:
+        raise KeyError("Subject not found.")
+
+    print("\n----- Student Record -----")
+    print("Name:", name)
+    print("Roll Number:", roll_number)
+    print("Subjects and Marks:")
+
+    for subject, marks in subjects.items():
+        print(subject, ":", marks)
+
+    print("\nMarks for", search_subject, ":", subjects[search_subject])
+
+except ValueError as e:
+    print("Invalid input:", e)
+
+except KeyError as e:
+    print("Error:", e)
+
+except Exception as e:
+    print("An unexpected error occurred:", e)
+print("\n student record displayed successfully")

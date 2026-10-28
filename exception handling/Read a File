@@ -1,0 +1,24 @@
+
+try:
+    filename = input("Enter file name: ")
+
+    file = open(filename, "r")
+    content = file.read()
+
+    print("\nFile Content:")
+    print(content)
+
+except FileNotFoundError:
+    print("Error: File does not exist")
+
+except PermissionError:
+    print("Error: Permission denied")
+
+finally:
+    try:
+        file.close()
+        print("File closed successfully")
+    except NameError:
+        print("No file was opened")
+
+    print("Program completed")

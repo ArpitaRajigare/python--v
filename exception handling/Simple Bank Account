@@ -1,0 +1,26 @@
+
+balance = 5000
+
+try:
+    print("Welcome to ABC Bank")
+    print("Current Balance:", balance)
+
+    amount = float(input("Enter withdrawal amount: "))
+
+    if amount <= 0:
+        raise ValueError("Amount must be greater than zero")
+
+    if amount > balance:
+        raise ValueError("Insufficient balance")
+
+    balance = balance - amount
+
+    print("Withdrawal successful")
+    print("Remaining Balance:", balance)
+
+except ValueError as e:
+    print("Error:", e)
+
+finally:
+    print("Thank you for using ABC Bank")
+

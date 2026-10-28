@@ -1,0 +1,28 @@
+
+try:
+    name = input("Enter student name: ")
+    marks = float(input("Enter marks out of 100: "))
+
+    if marks < 0 or marks > 100:
+        raise ValueError("Marks must be between 0 and 100")
+
+    print("\nStudent Name:", name)
+    print("Marks:", marks)
+
+    if marks >= 75:
+        print("Grade: Distinction")
+    elif marks >= 60:
+        print("Grade: First Class")
+    elif marks >= 40:
+        print("Grade: Pass")
+    else:
+        print("Grade: Fail")
+
+except ValueError as e:
+    print("Invalid input:", e)
+
+else:
+    print("Result generated successfully")
+
+finally:
+    print("Thank you")
