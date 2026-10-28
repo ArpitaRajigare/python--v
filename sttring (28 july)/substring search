@@ -1,0 +1,7 @@
+main_string = "Hello World"
+sub_string = "World"
+
+if sub_string in main_string:
+    print("Substring found")
+else:
+    print("Substring not found")

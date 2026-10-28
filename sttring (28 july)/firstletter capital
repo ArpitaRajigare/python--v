@@ -1,0 +1,4 @@
+sentence = input("enter the sentence")
+title_case = sentence.title()
+
+print("Title Case:", title_case)
