@@ -1,0 +1,38 @@
+points = []
+
+n = int(input("Enter number of points: "))
+
+for i in range(n):
+    x = int(input("Enter X: "))
+    y = int(input("Enter Y: "))
+    points.append((x, y))
+
+print("Points:", points)
+
+def distance(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+
+    return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+print("Enter index of first point:")
+i = int(input())
+
+print("Enter index of second point:")
+j = int(input())
+
+p1 = points[i]
+p2 = points[j]
+
+print("First point:", p1)
+print("Second point:", p2)
+print("Distance:", distance(p1, p2))
+
+origin = (0, 0)
+farthest = points[0]
+
+for point in points:
+    if distance(point, origin) > distance(farthest, origin):
+        farthest = point
+
+print("Farthest point:", farthest)

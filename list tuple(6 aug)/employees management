@@ -1,0 +1,20 @@
+
+project_a = set(input("Enter employees for Project A: ").split())
+
+project_b = set(input("Enter employees for Project B: ").split())
+
+both_projects = project_a.intersection(project_b)
+
+only_project_a = project_a.difference(project_b)
+
+only_project_b = project_b.difference(project_a)
+
+all_employees = project_a.union(project_b)
+
+print("\nProject A:", project_a)
+print("Project B:", project_b)
+
+print("Employees in both projects:", both_projects)
+print("Employees only in Project A:", only_project_a)
+print("Employees only in Project B:", only_project_b)
+print("Total unique employees:", all_employees)

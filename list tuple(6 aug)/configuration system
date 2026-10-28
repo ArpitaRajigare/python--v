@@ -1,0 +1,17 @@
+
+server_ip = ("192.168.1.10",)
+allowed_ips = ["192.168.1.20", "192.168.1.30"]
+
+def update_allowed_ips(ip):
+    allowed_ips.append(ip)
+
+print("Original Configuration:")
+print("Server IP:", server_ip)
+print("Allowed IPs:", allowed_ips)
+
+new_ip = input("Enter new allowed IP: ")
+update_allowed_ips(new_ip)
+
+print("\nUpdated Configuration:")
+print("Server IP:", server_ip)
+print("Allowed IPs:", allowed_ips)
