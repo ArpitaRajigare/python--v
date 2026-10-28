@@ -1,0 +1,7 @@
+string = input("Enter a string: ")
+substring = input("Enter the substring to search: ")
+
+if substring in string:
+    print("Substring exists in the string.")
+else:
+    print("Substring does not exist in the string.")
