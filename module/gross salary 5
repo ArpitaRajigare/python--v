@@ -1,0 +1,28 @@
+def gross_salary(basic, hra, da):
+    return basic + hra + da
+
+
+def deductions(gross, pf, tax):
+    return pf + tax
+
+
+def net_salary(gross, total_deductions):
+    return gross - total_deductions
+
+
+name = input("Enter employee name: ")
+basic = float(input("Enter basic salary: "))
+hra = float(input("Enter HRA: "))
+da = float(input("Enter DA: "))
+pf = float(input("Enter PF: "))
+tax = float(input("Enter tax: "))
+
+gross = gross_salary(basic, hra, da)
+total_deductions = deductions(gross, pf, tax)
+net = net_salary(gross, total_deductions)
+
+print("\nEmployee Name:", name)
+print("Gross Salary:", gross)
+print("Total Deductions:", total_deductions)
+print("Net Salary:", net)
+
