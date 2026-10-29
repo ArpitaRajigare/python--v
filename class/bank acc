@@ -1,0 +1,56 @@
+class BankAccount:
+    account_counter = 1000
+
+    def __init__(self, account_holder):
+        self.account_holder = account_holder
+        self.balance = 0
+        BankAccount.account_counter += 1
+        self.account_number = BankAccount.account_counter
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Error: Insufficient funds")
+
+    def display_balance(self):
+        print("Account Holder:", self.account_holder)
+        print("Account Number:", self.account_number)
+        print("Balance:", self.balance)
+
+    def transfer(self, amount, other_account):
+        if amount <= self.balance:
+            self.balance -= amount
+            other_account.balance += amount
+        else:
+            print("Error: Insufficient funds")
+
+
+name1 = input("Enter first account holder name: ")
+name2 = input("Enter second account holder name: ")
+
+account1 = BankAccount(name1)
+account2 = BankAccount(name2)
+
+deposit1 = float(input("Enter deposit amount for first account: "))
+deposit2 = float(input("Enter deposit amount for second account: "))
+
+account1.deposit(deposit1)
+account2.deposit(deposit2)
+
+withdraw1 = float(input("Enter withdrawal amount for first account: "))
+account1.withdraw(withdraw1)
+
+withdraw2 = float(input("Enter withdrawal amount for second account: "))
+account2.withdraw(withdraw2)
+
+transfer_amount = float(input("Enter amount to transfer from first account to second account: "))
+account1.transfer(transfer_amount, account2)
+
+print("\nFinal Account Details:")
+account1.display_balance()
+print()
+account2.display_balance()

@@ -1,0 +1,16 @@
+
+class Student:
+    def get_data(self):
+        self.name = input("Enter student name: ")
+        self.roll_no = int(input("Enter roll number: "))
+        self.marks = float(input("Enter marks: "))
+
+    def display_data(self):
+        print("\nStudent Details")
+        print("Name:", self.name)
+        print("Roll Number:", self.roll_no)
+        print("Marks:", self.marks)
+
+s1 = Student()
+s1.get_data()
+s1.display_data()
