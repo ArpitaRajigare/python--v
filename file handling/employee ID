@@ -1,0 +1,48 @@
+def display_employees(employees):
+    print("\nAll Employees:")
+    for emp in employees:
+        print(emp[0], emp[1], emp[2], emp[3])
+
+def highest_paid(employees):
+    emp = max(employees, key=lambda x: x[3])
+    print("\nHighest Paid Employee:")
+    print(emp[0], emp[1], emp[2], emp[3])
+
+def average_salary(employees):
+    avg = sum(emp[3] for emp in employees) / len(employees)
+    print("\nAverage Salary:", avg)
+
+def above_salary(employees, salary):
+    print("\nEmployees earning above", salary, ":")
+    for emp in employees:
+        if emp[3] > salary:
+            print(emp[0], emp[1], emp[2], emp[3])
+
+file = open("employees.txt", "w")
+
+n = int(input("Enter number of employees: "))
+
+for i in range(n):
+    emp_id = input("Enter Employee ID: ")
+    name = input("Enter Name: ")
+    dept = input("Enter Department: ")
+    salary = int(input("Enter Salary: "))
+    file.write(emp_id + "," + name + "," + dept + "," + str(salary) + "\n")
+
+file.close()
+
+file = open("employees.txt", "r")
+employees = []
+
+for line in file:
+    emp_id, name, dept, salary = line.strip().split(",")
+    employees.append((emp_id, name, dept, int(salary)))
+
+file.close()
+
+display_employees(employees)
+highest_paid(employees)
+average_salary(employees)
+
+salary = int(input("\nEnter salary limit: "))
+above_salary(employees, salary)

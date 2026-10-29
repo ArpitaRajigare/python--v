@@ -1,0 +1,101 @@
+def add_book():
+    book_id = input("Enter Book ID: ")
+    title = input("Enter Title: ")
+    author = input("Enter Author: ")
+
+    file = open("books.txt", "a")
+    file.write(book_id + "," + title + "," + author + ",Available\n")
+    file.close()
+
+def search_book():
+    book_id = input("Enter Book ID to search: ")
+
+    file = open("books.txt", "r")
+    found = False
+
+    for line in file:
+        book = line.strip().split(",")
+
+        if book[0] == book_id:
+            print("\nBook Found:")
+            print(book[0], book[1], book[2], book[3])
+            found = True
+
+    file.close()
+
+    if not found:
+        print("\nBook not found")
+
+def issue_book():
+    book_id = input("Enter Book ID to issue: ")
+
+    file = open("books.txt", "r")
+    books = file.readlines()
+    file.close()
+
+    file = open("books.txt", "w")
+
+    for line in books:
+        book = line.strip().split(",")
+
+        if book[0] == book_id and book[3] == "Available":
+            book[3] = "Issued"
+            print("\nBook issued successfully")
+
+        file.write(",".join(book) + "\n")
+
+    file.close()
+
+def return_book():
+    book_id = input("Enter Book ID to return: ")
+
+    file = open("books.txt", "r")
+    books = file.readlines()
+    file.close()
+
+    file = open("books.txt", "w")
+
+    for line in books:
+        book = line.strip().split(",")
+
+        if book[0] == book_id and book[3] == "Issued":
+            book[3] = "Available"
+            print("\nBook returned successfully")
+
+        file.write(",".join(book) + "\n")
+
+    file.close()
+
+def display_available():
+    file = open("books.txt", "r")
+
+    print("\nAvailable Books:")
+
+    for line in file:
+        book = line.strip().split(",")
+
+        if book[3] == "Available":
+            print(book[0], book[1], book[2])
+
+    file.close()
+
+n = int(input("Enter number of books: "))
+
+for i in range(n):
+    add_book()
+
+print("\n1. Search Book")
+print("2. Issue Book")
+print("3. Return Book")
+print("4. Display Available Books")
+
+choice = int(input("Enter your choice: "))
+
+if choice == 1:
+    search_book()
+elif choice == 2:
+    issue_book()
+elif choice == 3:
+    return_book()
+elif choice == 4:
+    display_available()

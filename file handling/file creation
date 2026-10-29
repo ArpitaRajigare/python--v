@@ -1,0 +1,25 @@
+file1 = open("file1.txt", "w")
+text1 = input("Enter contents of first file: ")
+file1.write(text1)
+file1.close()
+
+file2 = open("file2.txt", "w")
+text2 = input("Enter contents of second file: ")
+file2.write(text2)
+file2.close()
+
+file1 = open("file1.txt", "r")
+content1 = file1.read()
+file1.close()
+
+file2 = open("file2.txt", "r")
+content2 = file2.read()
+file2.close()
+
+file3 = open("file3.txt", "w")
+file3.write(content1 + "\n" + content2)
+file3.close()
+
+print("\nContents of third file:")
+print(content1)
+print(content2)

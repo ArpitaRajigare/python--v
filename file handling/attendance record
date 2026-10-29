@@ -1,0 +1,36 @@
+def display_students(students):
+    print("\nAll Students:")
+    for student in students:
+        percentage = (student[2] / student[1]) * 100
+        print(student[0], student[1], student[2], round(percentage, 2), "%")
+
+def below_75(students):
+    print("\nStudents having attendance below 75%:")
+    for student in students:
+        percentage = (student[2] / student[1]) * 100
+        if percentage < 75:
+            print(student[0], round(percentage, 2), "%")
+
+file = open("attendance.txt", "w")
+
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    name = input("Enter Name: ")
+    total = int(input("Enter Total Classes: "))
+    attended = int(input("Enter Attended Classes: "))
+    file.write(name + "," + str(total) + "," + str(attended) + "\n")
+
+file.close()
+
+file = open("attendance.txt", "r")
+students = []
+
+for line in file:
+    name, total, attended = line.strip().split(",")
+    students.append((name, int(total), int(attended)))
+
+file.close()
+
+display_students(students)
+below_75(students)
