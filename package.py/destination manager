@@ -1,0 +1,23 @@
+class DestinationManager:
+    def __init__(self):
+        # Catalog of destinations with their distance from Earth (in million km) and base rate multiplier
+        self.catalog = {
+            "Moon": {"distance_m_km": 0.384, "base_rate": 150000},
+            "Mars": {"distance_m_km": 225.0, "base_rate": 750000},
+            "Titan": {"distance_m_km": 1200.0, "base_rate": 2300000}
+        }
+
+    def get_info(self, destination: str) -> dict:
+        """Retrieves details for a specific celestial destination."""
+        return self.catalog.get(destination, None)
+
+    def calculate_cost(self, destination: str, seat_class: str) -> float:
+        """Calculates ticket pricing based on destination distance and cabin tier."""
+        dest = self.get_info(destination)
+        if not dest:
+            raise ValueError(f"Destination '{destination}' is not serviced by this agency.")
+        
+        multipliers = {"Economy": 1.0, "Business": 1.8, "First Class": 3.5}
+        class_mult = multipliers.get(seat_class, 1.0)
+        
+        return dest["base_rate"] * class_mult

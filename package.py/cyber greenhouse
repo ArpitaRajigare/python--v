@@ -1,0 +1,22 @@
+class PollinatorDrone:
+    """Manages autonomous flight patterns and battery metrics for crop drones."""
+    
+    def __init__(self, drone_id: str, crop_type: str):
+        self.drone_id = drone_id
+        self.crop_type = crop_type
+        self.battery_percentage = 100.0
+        self.flowers_pollinated = 0
+
+    def perform_flight(self, duration_minutes: int):
+        """Drains battery and tracks productivity during operations."""
+        if self.battery_percentage < 15.0:
+            return "Flight Aborted: Low Battery. Returning to charging dock."
+        
+        # Calculate power draw and tasks performed
+        power_loss = duration_minutes * 1.5
+        self.battery_percentage = max(0.0, self.battery_percentage - power_loss)
+        
+        newly_pollinated = duration_minutes * 8
+        self.flowers_pollinated += newly_pollinated
+        
+        return f"Flight Completed. Pollinated {newly_pollinated} {self.crop_type} blossoms."
